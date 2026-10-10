@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kagi Quick Answer Enhanced</title>
+    <meta name="manifest.open_in_tab" content="true" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Kagi Quick Answer Enhanced</h1>
+      <form id="settings">
+        <fieldset>
+          <legend>Model</legend>
+          <label>OpenRouter API key <input name="apiKey" type="password" autocomplete="off" /></label>
+          <label>Model <input name="model" required /></label>
+          <label>
+            Reasoning effort
+            <select name="effort"></select>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Sources</legend>
+          <label>Search results sent as snippets <input name="snippetCount" type="number" min="1" max="50" required /></label>
+          <label>Top results to read in full <input name="extractCount" type="number" min="0" max="20" required /></label>
+          <label>Time budget for reading pages (ms) <input name="budgetMs" type="number" min="0" step="100" required /></label>
+        </fieldset>
+        <fieldset>
+          <legend>Follow-up search</legend>
+          <label>
+            Kagi API key
+            <input name="kagiApiKey" type="password" autocomplete="off" />
+            <small>Lets the model run more searches when the page's results aren't enough. Leave empty to use the page's results only.</small>
+          </label>
+          <label>
+            Max additional searches per answer
+            <input name="maxSearchQueries" type="number" min="0" max="10" required />
+            <small>Searches run in parallel. 0 turns searching off.</small>
+          </label>
+          <label>Results per search <input name="searchResultCount" type="number" min="1" max="20" required /></label>
+          <label>Results per search to read in full <input name="searchExtractCount" type="number" min="0" max="10" required /></label>
+        </fieldset>
+        <fieldset>
+          <legend>System prompt</legend>
+          <textarea name="systemPrompt" rows="14" required></textarea>
+          <button type="button" id="reset-prompt">Reset to default</button>
+        </fieldset>
+        <div class="actions">
+          <button type="submit">Save</button>
+          <span id="status" role="status"></span>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

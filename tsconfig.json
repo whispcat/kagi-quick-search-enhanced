@@ -1,0 +1,4 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "exclude": ["tests", ".output", "node_modules"]
+}
